@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<style>
+    .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-body{
+    	width:100%;
+    }
+    .card-img-top {
+        height: 50%;
+        width: 50%;
+    }
+    .btn{
+    	width:100%;
+    }
+    .card-title{
+    	font-size:25px;
+    	
+    }
+    .card-text{
+    	font-size:20px;
+    }
+</style>
+
+<body>
+    <div class="container p-5 d-flex justify-content-center align-items-center">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top mt-3"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAMFBMVEXBx9D///++xM7GzNTr7fDx8vTR1dzY2+H7+/z3+Pnl6Ove4ebM0dm7wcvj5eno6u4vwxJXAAAFJklEQVRogcWb2ZarIBBFsRAQh+T///YKaivzgeC6561XJ+wwFzWwoV56nBclV86M+CrVMo+6oR1Wif2qlTHaxW4df3L1rfwBFexJKM4cqKv9X1yJ6QX2Ds5wb34FHmNPC9+K3EsbXzA6wtYK6LHbe4VMfZkt5FZHtvRNip/ZQlb2+e57kZ5nT4q1kS2dqfy8Z9kjbydbOh8b2ZP8jWzpsok9/jDcDzhLdz3JVviGzmtTlezpx5l+inhiycXZoiPawOO7LcoeO4IPRSc9xp57dvoQzRj70x+9wz8I+9NrgbvaQnjAfmHAD4XD7rPHt9A73F9wHlu8RjYSOfbE4XboFvwd75Bx2SvYDm1czULvTWkxK44aF7Sm2Qprg/jimkR6Ac9BUin2CO0u4nN4Pk8zduttz/X2YE/gT4/fDBM4aI9vP9iYqZC+jqFb4GlM3GxkZxPLWWDQxfvY5ez+IvC9NW/8QfB7o/2xgelKGgEPONCBv7V+saEDrfzY0Egz1/F2sYGFRt8iehi+QDvXcjvZouIreSGdEA4b+Qb2uNR4Lw62Lp9olDR1PQGLdtMPNvJ59EUP9IPJmz0B23LNAp9ay40dHbHsBZijmKEZF2Br0nKxoRMB9yEBq+043AxbIHcnjN7bLGsTJ1sBH8Y29yEJtKcONjTkSwUbWD520Bl0ptUsNczEN2cbw6w06Cy/BJzp9qja2Yhd3J3NuGFD1173MTcXMsN+ZewZmRT0kN1HkmFGOXyTGKEtMmi67fTAQltkA/iiwP3imJ3PaGDQUmM5u9wX+ozWDPxkxYSjr7qRQcvcfBRmgz4T+jLk8LUfRXcZ6iqihYEjxOBbFG2OFEMuvPN3Qmh0HPdrmQHW1QVHTBfEaDm1MtzDApmLeFdqyNA+q3H3V7HLcHyy61WA43umCZ6zGTvEV/LwhB++yd9fN+O7Nhnba1pWu595xf6+RJvy+y5ahnvFz7UnnfjyF+nX48KbwlmSIY+SKN5kG0iTedAaMFXwPdZd+z2G3t/92V/UbnmBPcL2Wn9p1E7tL4Lt8/7i6Lukv+y75D8tdPseKy42EwnidWJA9EiX39/78VmTJ3RqEqXwDS/6HWjF30K+xlzE6/Q7ZPwtVc/uUJlnwulvyfiZyrk5eaUjAqefKe1fq59nX8mFfPrXUn5F+rXXRokJ/fMrxlf6j3N9KT7n1o2R9iPjTuu8YkbZ7UcepsigB5HyVsUuabr957EtXuPcySsyo4+4QSTOUOW8zSucUSdeEj4ptl5DHgltu3GicCvAoZmygtXkxceCjuOunbL8pr24YHD6vcgO4qH+Un+PHcaB/RvlPXYk/u2dAa+xY3F/b7m9xY7nO7j+39f6Hc/zcA6Bl9ip/BZnrVcFCvL6plpN5jOBYf6yHrl45F5Q6TyuUkIJqOe5kc3jco+3pEupQs7myeavebu8KioWk34+EEp5e15gLZU4BWrOd6SQp5l25ZU1OS43JE/Ttyy31vX+cWtQoPxUP55JTcay5+FE83KDTDTiNVFgS/ZNETgfOfTLRvMEc2S30zV52JFMNEILVqZ5Jf+HV+WfD5G8eyJZHvoxLAmpzrsfovUG27Z+0ntOz5EqmKZ6g0SdBRGt6itcF/okxkVGXSwkMzPVUl9iq8VMzZqRXDlnCV9ye33JUKqrKeQi/1ZXMzRGBI4f9mM9kaWvLYn4PeqojHRtFRfF4zkt7Lq6OepaN2cl5H+qF7T6f3WSh0x9KEXrQ82R81596P0DOtXF/gOgNDCLRVQ9WwAAAABJRU5ErkJggg=="
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${contact.firstName} + ' ' + ${contact.lastName}"></h5>
+                <p class="card-text" th:text=${contact.phoneNumber}></p>
+                <a th:href="'/composeMessage?firstName=' + ${contact.firstName} + '&amp;lastName=' +   ${contact.lastName} + '&amp;phoneNumber=' +   ${contact.phoneNumber}" name="eachContact" th:value="${contact.firstName} + ' ' + ${contact.lastName} + ' ' +${contact.phoneNumber}" class="btn btn-primary">Send Message</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <title>Hello, world!</title>
+</head>
+<style>
+    * {
+        font-family: 'Montserrat', sans-serif;
+    }
+    .list-group a{
+    	text-decoration:none;
+    }
+    .contact-user {
+        display: flex;
+        padding: 1.2rem 2rem;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .contact-user~.contact-user {
+        border-top: 1px solid #eee;
+    }
+
+    .contact-user:hover {
+        background: #DCDCDC;
+    }
+
+    .contact-user.active {
+        background: #F5F5F5;
+    }
+
+    .contact-user-icon {
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 50%;
+        background: #303F9F;
+        color: white;
+        overflow: hidden;
+        text-align: center;
+        line-height: 4.5rem;
+    }
+    .contact-user-icon img {
+        display: block;
+        width: 100%;
+        height: 5rem;
+    }
+
+    .contact-user-details {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding-left: 2rem;
+        flex-grow: 1;
+    }
+    .contact-username {
+        line-height: 2.5rem;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .chat-options {
+        height: 6rem;
+        width: 100%;
+        padding: 2px;
+        margin: 0 auto;
+
+    }
+    input:focus {
+        outline: none;
+    }
+
+    .chat-details {
+        width: 40rem;
+        height: inherit;
+        border-left: 1px solid #eee;
+    }
+
+
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+</style>
+
+<body>
+    <div class="container p-5">
+    	<div class="text-center"><h1>Messaging App</h1></div>
+    	<div class="text-center">An app that loads all the contact from JSON File and send the randomly generated OTP to the number that is mentioned in the project File.</div>	
+        <div class="row">
+            <div class="col-md-6">
+            	<h1 class="text-center">Contacts</h1>
+                <div class="list-group">
+                    <th:block th:each="contact: ${listContacts}">
+                        <a th:href="'/openContact?firstName=' + ${contact.firstName} + '&amp;lastName=' +   ${contact.lastName} + '&amp;phoneNumber=' +   ${contact.phoneNumber}"
+                            name="eachContact"
+                            th:value="${contact.firstName} + ' ' + ${contact.lastName} + ' ' +${contact.phoneNumber}"
+                            class="list-group-item">
+                            <div class="contact-user active">
+                                <div class="contact-user-icon">
+                                    <img
+                                        src="https://wowsciencecamp.org/wp-content/uploads/2018/07/dummy-user-img-1-400x400_x_acf_cropped.png" />
+                                </div>
+                                <div class="contact-user-details">
+                                    <span class="contact-username" th:field="*{firstName}" name="eachContact"
+                                        th:value="${contact.firstName}"
+                                        th:text="${contact.firstName} + ' ' + ${contact.lastName}">Rishabh
+                                        Parsediya</span>
+                                    <span th:field="*{phoneNumber}" name="eachContact" th:value="${contact.phoneNumber}"
+                                        th:text="${contact.phoneNumber}">+917987567233</span>
+                                </div>
+                            </div>
+                        </a>
+                    </th:block>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+            	<h1 class="text-center">Message List(Sent with OTP)</h1>
+                <div class="list-group">
+                    <th:block th:each="message: ${listMessage}">
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1" th:field="*{name}" th:value="${message.name}"
+                                    th:text="${message.name}"></h5>
+                                <small class="text-muted" th:field="*{localDateTime}"
+                                    th:value="${message.localDateTime}" th:text="${message.localDateTime}"></small>
+                            </div>
+                            <div class="d-flex">
+                            <p>OTP: </p><p class="mb-1" th:field="*{otp}" th:value="'OTP:' + ${message.otp}" th:text="${message.otp}"></p>
+                        	</div>
+                        </a>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
